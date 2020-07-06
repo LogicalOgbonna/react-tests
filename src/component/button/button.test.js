@@ -6,6 +6,13 @@ const expredProps = {
     text: "Fetch",
     emitEvent: () => { }
 }
+
+const button = shallow(<Button />);
+
+it('should render correctly', () => {
+    expect(button).toMatchSnapshot();
+})
+
 describe('<Button /> Component', () => {
     describe('Checking propTypes', () => {
         it("Should Not throw Errors", () => {

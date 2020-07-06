@@ -6,17 +6,29 @@ import Button from './component/button/button';
 import ListItem from './component/list-item/list-item';
 import { connect } from 'react-redux';
 import { fetchPost } from './actions';
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <section className="main">
-        <Headline header="Posts" description="Click to render Posts" />
-        <Button />
-        <ListItem />
-      </section>
-    </div>
-  );
+export class App extends React.Component {
+  state = {
+    value: []
+  }
+
+  onClick = () => {
+    this.setState({ value: [{ name: "Man" }] })
+  }
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <section className="main">
+          <Headline header="Posts" description="Click to render Posts" />
+          <Button />
+          <ListItem />
+        </section>
+
+        <button data-test="add-button" onClick={this.onClick}>Click</button>
+      </div>
+    );
+
+  }
 }
 
 const mapStateToProps = state => ({

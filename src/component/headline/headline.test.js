@@ -1,11 +1,12 @@
 import React from "react";
 import { shallow } from 'enzyme';
 import Headline from "./headline";
-import { findByTestAttr, checkProps } from "../../utils/tests";
+import { findByTestAttr, checkProps, renderWithoutCrashing } from "../../utils/tests";
 
 const setUp = (props = {}, state = {}) => {
     return shallow(<Headline {...props} />)
 }
+
 
 describe('<Headline /> Component', () => {
 
@@ -43,9 +44,7 @@ describe('<Headline /> Component', () => {
             };
             component = setUp(props)
         });
-        it("Should Render Without Crashing", () => {
-            expect(findByTestAttr(component, "headerlineComponent").length).toBe(1)
-        })
+        renderWithoutCrashing(component, "<Headline />");
         it("Should Render <h1 />", () => {
             expect(findByTestAttr(component, "header").length).toBe(1)
         })
@@ -59,9 +58,7 @@ describe('<Headline /> Component', () => {
         beforeEach(() => {
             component = setUp();
         });
-        it("Should Render Without Crashing", () => {
-            expect(findByTestAttr(component, "headerComponent").length).toBe(0)
-        });
+        renderWithoutCrashing(component, "<Headline />");
         it("Should Not Render <h1 />", () => {
             expect(findByTestAttr(component, "header").length).toBe(0)
         })

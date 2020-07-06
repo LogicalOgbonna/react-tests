@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Headline /> Component Have No Props should render <Headline /> Without Crashing 1`] = `undefined`;
+
+exports[`<Headline /> Component Have Props should render <Headline /> Without Crashing 1`] = `undefined`;

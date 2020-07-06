@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from 'enzyme';
-import { checkProps, findByTestAttr } from '../../utils/tests';
+import { checkProps, findByTestAttr, renderWithoutCrashing } from '../../utils/tests';
 import ListItem from "./list-item";
 const expectedProps = {
     title: "soe",
@@ -21,16 +21,16 @@ describe('<ListItem /> Component', () => {
         beforeEach(() => {
             component = shallow(<ListItem {...expectedProps} />)
         });
-        it('should Render <ListItem /> Without Crashing', () => {
-            const listItem = findByTestAttr(component, "listItemComponent");
-            expect(listItem.length).toBe(1)
-        })
+        renderWithoutCrashing(component, "<ListItem />");
         it('should Render title in <ListItem />', () => {
             const listItem = findByTestAttr(component, "title");
             expect(listItem.length).toBe(1)
         })
         it('should Render description in <ListItem />', () => {
+            // console.log()
             const listItem = findByTestAttr(component, "description");
+            console.log(listItem.props())
+            // expect(listItem.props().title).toEqual("soe")
             expect(listItem.length).toBe(1)
         })
     })
